@@ -3,7 +3,7 @@ Directory contains small programs to extract all frames from a mp4 video, center
 
 Image Centering:
 
-![frame_16](https://user-images.githubusercontent.com/11217416/118098147-d5b7dc80-b3d3-11eb-9c20-246ccef7699d.png)
+<img src="https://user-images.githubusercontent.com/11217416/118098147-d5b7dc80-b3d3-11eb-9c20-246ccef7699d.png" alt="alt text" width="150" height="150">
 Example of an uncentered object with a specific background color.
 
 ![frame_16](https://user-images.githubusercontent.com/11217416/118096086-342f8b80-b3d1-11eb-8ac3-9b6a0a925ad9.png)

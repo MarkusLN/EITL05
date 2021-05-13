@@ -10,19 +10,28 @@ import org.jcodec.common.io.NIOUtils;
 import org.jcodec.common.model.Picture;
 import org.jcodec.scale.AWTUtil;
 
+
 public class FrameExtractor {
 
-    public static void extractFrames(String videoPath, String outputDirectory, int limit, String imageFormat) throws IOException, JCodecException {
-        if(limit <= 0)
-            limit = Integer.MAX_VALUE;
-        File video = new File(videoPath);
-        FrameGrab grab = FrameGrab.createFrameGrab(NIOUtils.readableChannel(video));
-        Picture frame;
-        int i = 0; // To limit the number of images.
-        while (null != (frame = grab.getNativeFrame()) && i < limit) {
-            BufferedImage bufferedImage = AWTUtil.toBufferedImage(frame);
-            ImageIO.write(bufferedImage, imageFormat, new File(outputDirectory + "/" +  i + "." + imageFormat));
-            i++;
+    /**
+     * Method to extract frames from a specified mp4-file.
+     * @param videoPath path to the mp4-file
+     * @param outputDirectory Directory where the frame images will be stored
+     * @param limit limits the number of frames that will be extracted
+     * @throws IOException exception is thrown if the path to either the mp4-file or the outputdirectory is not found
+     * @throws JCodecException
+     */
+    public static void extractFrames(String videoPath, String outputDirectory, int limit) throws IOException, JCodecException {
+        if(limit > 0) {
+            File video = new File(videoPath);
+            FrameGrab grab = FrameGrab.createFrameGrab(NIOUtils.readableChannel(video));
+            Picture frame;
+            int i = 0; // To limit the number of images.
+            while (null != (frame = grab.getNativeFrame()) && i < limit) {
+                BufferedImage bufferedImage = AWTUtil.toBufferedImage(frame);
+                ImageIO.write(bufferedImage, imageFormat, new File(outputDirectory + "/" + i + "." + "png"));
+                i++;
+            }
         }
     }
 

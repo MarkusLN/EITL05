@@ -12,6 +12,15 @@ public class ImageCentering {
     private static int bottom = Integer.MIN_VALUE;
     private static BufferedImage image;
 
+    /**
+     * Method to center an object in an image.
+     * Requirements:
+     * The non object part of the image should be of a single color.
+     * @param directory path to the directory which contains the images to be centered.
+     * @param outputDirectory path to the directory where the centered images should be stored.
+     * @param backgroundColor the background color.
+     * @throws IOException is thrown if either of the two paths are incorrect.
+     */
     public static void executeCenteringForEveryFile(String directory, String outputDirectory, int backgroundColor) throws IOException {
         List<String> results = new ArrayList<String>();
         File[] files = new File(directory).listFiles();
